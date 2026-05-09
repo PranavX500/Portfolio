@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@theme {
+  --font-sans: "Kanit", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-bg: #0C0C0C;
+  --color-brand-text: #D7E2EA;
+  --color-brand-accent: #BBCCD7;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-brand-bg text-brand-text font-sans antialiased;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: #D7E2EA;
+    color: #0C0C0C;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0C0C0C;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1A1A1A;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2A2A2A;
+  }
+}
+
+.glass {
+  @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.05];
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-linear-to-b from-[#646973] to-[#BBCCD7];
+}
+
+.magnetic-area {
+  @apply relative inline-block;
+}
+
+.blur-glow {
+  filter: blur(100px);
+  opacity: 0.15;
+}
+
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+}
