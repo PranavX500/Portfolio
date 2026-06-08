@@ -12,7 +12,7 @@ const projects = [
     tech: ["Spring Boot", "Spring Cloud", "Kafka", "Docker", "MySQL", "Redis"],
     features: ["Discovery (Eureka)", "API Gateway", "Distributed Auth", "Kafka Events"],
     github: "https://github.com/PranavX500/UrbanMart",
-    live: "https://urbanmart.tech/signup",
+    live: "http://urbanmart.tech/signup",
    
     // Updated to a high-end, modern urban shopping/ecommerce visual
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800&h=600",
