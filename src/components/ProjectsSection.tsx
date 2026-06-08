@@ -25,7 +25,7 @@ const projects = [
     desc: "A full-stack sports tournament platform designed for real-time match tracking and tournament lifecycle management.",
     tech: ["Flutter", "Spring Boot", "Spring Security", "Firebase", "Docker"],
     features: ["Live Updates", "Role-based Access", "Schedule Engine", "Points Table"],
-    github: "https://github.com/PranavX500",
+    github: "https://github.com/PranavX500/LiveScore_Backend.git",
   
     // Updated to a cricket-specific high-quality image
     image: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&q=80&w=800&h=600",
@@ -38,7 +38,7 @@ const projects = [
     desc: "A backend clone of BookMyShow that handles cinema listings, show scheduling, and complex seat allocation logic.",
     tech: ["Spring Boot", "JPA", "Hibernate", "MySQL", "Maven"],
     features: ["Seat Lock Logic", "DTO Pattern", "Global Exception Handler"],
-    github: "https://github.com/PranavX500/BookMYShow-Backend-clone.git",
+    github: "https://github.com/PranavX500/BookMYShow-Backend-clone",
   
     image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=800&h=600",
     color: "from-purple-500/10 to-indigo-500/10"
