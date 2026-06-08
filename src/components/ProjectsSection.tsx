@@ -97,20 +97,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total }) => {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Magnet factor={0.2}>
-                <a href={project.github} target="_blank" className="flex items-center gap-2 group/btn">
-                  <GlowButton variant="secondary" className="px-6 py-3 text-sm">
-                    <Github className="w-4 h-4" /> Code
-                  </GlowButton>
-                </a>
-              </Magnet>
-              <Magnet factor={0.2}>
-                <a href="#" target="_blank" className="flex items-center gap-2">
-                  <GlowButton className="px-6 py-3 text-sm">
-                    <ExternalLink className="w-4 h-4" /> Visit
-                  </GlowButton>
-                </a>
-              </Magnet>
+            <Magnet factor={0.2}>
+  <a
+    href="https://urbanmart.tech/signup"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2"
+  >
+    <GlowButton className="px-6 py-3 text-sm">
+      <ExternalLink className="w-4 h-4" /> Visit
+    </GlowButton>
+  </a>
+</Magnet>
             </div>
           </div>
 
