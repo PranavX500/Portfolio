@@ -12,6 +12,7 @@ const projects = [
     tech: ["Spring Boot", "Spring Cloud", "Kafka", "Docker", "MySQL", "Redis"],
     features: ["Discovery (Eureka)", "API Gateway", "Distributed Auth", "Kafka Events"],
     github: "https://github.com/PranavX500/UrbanMart",
+    live: "https://urbanmart.tech/signup",
    
     // Updated to a high-end, modern urban shopping/ecommerce visual
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800&h=600",
@@ -25,6 +26,7 @@ const projects = [
     tech: ["Flutter", "Spring Boot", "Spring Security", "Firebase", "Docker"],
     features: ["Live Updates", "Role-based Access", "Schedule Engine", "Points Table"],
     github: "https://github.com/PranavX500",
+  
     // Updated to a cricket-specific high-quality image
     image: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&q=80&w=800&h=600",
     color: "from-emerald-600/20 to-blue-600/20"
@@ -37,19 +39,34 @@ const projects = [
     tech: ["Spring Boot", "JPA", "Hibernate", "MySQL", "Maven"],
     features: ["Seat Lock Logic", "DTO Pattern", "Global Exception Handler"],
     github: "https://github.com/PranavX500/BookMYShow-Backend-clone.git",
+  
     image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=800&h=600",
     color: "from-purple-500/10 to-indigo-500/10"
   }
 ];
 
+interface Project {
+  num: string;
+  title: string;
+  category: string;
+  desc: string;
+  tech: string[];
+  features: string[];
+  github: string;
+  live?: string;
+  image: string;
+  color: string;
+}
+
 interface ProjectCardProps {
-  project: any;
+  project: Project;
   index: number;
   total: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "start start"]
@@ -67,16 +84,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total }) => {
         style={{ scale, opacity }}
         className="w-full h-full glass rounded-[2.5rem] md:rounded-[4rem] overflow-hidden pointer-events-auto shadow-2xl relative group"
       >
-        <div className={`absolute inset-0 bg-linear-to-br ${project.color} opacity-20 pointer-events-none`} />
+        <div
+          className={`absolute inset-0 bg-linear-to-br ${project.color} opacity-20 pointer-events-none`}
+        />
 
         <div className="relative h-full grid grid-cols-1 lg:grid-cols-2">
           {/* Content Area */}
           <div className="p-8 md:p-14 lg:p-20 flex flex-col justify-between order-2 lg:order-1">
             <div>
               <div className="flex items-center gap-4 mb-6">
-                <span className="text-xl md:text-2xl font-black text-brand-accent/40">{project.num}</span>
+                <span className="text-xl md:text-2xl font-black text-brand-accent/40">
+                  {project.num}
+                </span>
+
                 <div className="h-px w-8 bg-brand-accent/20" />
-                <span className="text-xs uppercase tracking-widest font-bold text-brand-accent">{project.category}</span>
+
+                <span className="text-xs uppercase tracking-widest font-bold text-brand-accent">
+                  {project.category}
+                </span>
               </div>
 
               <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6">
@@ -89,26 +114,47 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total }) => {
 
               <div className="flex flex-wrap gap-2 mb-10">
                 {project.tech.map((t: string) => (
-                  <span key={t} className="px-3 py-1 bg-white/5 rounded-full text-[10px] uppercase tracking-wider font-bold text-brand-text/80">
+                  <span
+                    key={t}
+                    className="px-3 py-1 bg-white/5 rounded-full text-[10px] uppercase tracking-wider font-bold text-brand-text/80"
+                  >
                     {t}
                   </span>
                 ))}
               </div>
             </div>
 
+            {/* Buttons */}
             <div className="flex flex-wrap gap-4">
-            <Magnet factor={0.2}>
-  <a
-    href="https://urbanmart.tech/signup"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center gap-2"
-  >
-    <GlowButton className="px-6 py-3 text-sm">
-      <ExternalLink className="w-4 h-4" /> Visit
-    </GlowButton>
-  </a>
-</Magnet>
+              <Magnet factor={0.2}>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <GlowButton variant="secondary" className="px-6 py-3 text-sm">
+                    <Github className="w-4 h-4" />
+                    Code
+                  </GlowButton>
+                </a>
+              </Magnet>
+
+              {project.live && (
+                <Magnet factor={0.2}>
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <GlowButton className="px-6 py-3 text-sm">
+                      <ExternalLink className="w-4 h-4" />
+                      Visit
+                    </GlowButton>
+                  </a>
+                </Magnet>
+              )}
             </div>
           </div>
 
@@ -120,14 +166,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total }) => {
               className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-110 group-hover:scale-100"
               referrerPolicy="no-referrer"
             />
+
             <div className="absolute inset-0 bg-linear-to-r from-brand-bg/90 blur-xl opacity-0 group-hover:opacity-20 transition-opacity" />
 
-            {/* Floating Info Boxes */}
             <div className="absolute bottom-6 left-6 right-6 flex gap-3 overflow-x-auto scrollbar-hide pb-2">
               {project.features.map((f: string, i: number) => (
-                <div key={i} className="glass px-4 py-3 rounded-2xl flex items-center gap-3 shrink-0">
+                <div
+                  key={i}
+                  className="glass px-4 py-3 rounded-2xl flex items-center gap-3 shrink-0"
+                >
                   <div className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
-                  <span className="text-[10px] uppercase font-black tracking-widest">{f}</span>
+
+                  <span className="text-[10px] uppercase font-black tracking-widest">
+                    {f}
+                  </span>
                 </div>
               ))}
             </div>
@@ -162,3 +214,4 @@ export function ProjectsSection() {
     </section>
   );
 }
+
